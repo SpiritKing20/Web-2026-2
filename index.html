@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="Kelly Marin" />
+    <title>Web Usb Cali</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/usb.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+            <a class="navbar-brand" href="#!">Web Development</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#modules">Modules</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
+                    
+                    <!-- Switch Neumórfico (Sol / Luna) -->
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <label class="theme-switch" for="theme-checkbox" title="Cambiar tema">
+                            <input type="checkbox" id="theme-checkbox" />
+                            <div class="slider">
+                                <!-- Icono Sol (Modo Claro) -->
+                                <svg class="icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="5" fill="#f59e0b" stroke="#f59e0b"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3" stroke="#f59e0b"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23" stroke="#f59e0b"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="#f59e0b"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="#f59e0b"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12" stroke="#f59e0b"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12" stroke="#f59e0b"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="#f59e0b"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="#f59e0b"></line>
+                                </svg>
+                                <!-- Icono Luna y Estrella (Modo Oscuro) -->
+                                <svg class="icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="#f59e0b" stroke="#f59e0b"></path>
+                                    <polygon points="12 2 13.09 4.26 15.54 4.62 13.77 6.34 14.19 8.78 12 7.63 9.81 8.78 10.23 6.34 8.46 4.62 10.91 4.26 12 2" fill="#f59e0b" stroke="#f59e0b"></polygon>
+                                </svg>
+                                <!-- Botón Deslizante -->
+                                <div class="thumb"></div>
+                            </div>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content-->
+    <div class="container px-4 px-lg-5">
+        <!-- Heading Row-->
+        <div class="row gx-4 gx-lg-5 align-items-center my-5">
+            <div class="col-lg-7">
+                <img class="img-fluid rounded mb-4 mb-lg-0" src="./assets/img/banner.jpeg" alt="Usb Cali" />
+            </div>
+            <div class="col-lg-5">
+                <h1 class="font-weight-light">Web Development</h1>
+                <p>This course is designed to provide Multimedia Engineering students with an understanding of and
+                    practical experience in front-end web development. Over the course of the program, students will
+                    progress from the fundamentals of HTML, CSS, and JavaScript to the advanced use of libraries and
+                    frameworks such as React.js. <br> <br> The course combines theory with practice including both
+                    individual and team projects to ensure students can apply what they have learned in real-world
+                    contexts.</p>
+            </div>
+        </div>
+
+        <!-- Call to Action-->
+        <div class="card my-5 py-4 text-center action-card">
+            <div class="card-body">
+                <p class="m-0">This call to action card is a great place to showcase some important
+                    information or display a clever tagline!</p>
+                <!-- Indicador de SessionStorage -->
+                <small class="d-block mt-2 text-muted" id="session-info">Sesión activa: 0 cambios de tema.</small>
+            </div>
+        </div>
+
+        <!-- Content Row-->
+        <div class="row gx-4 gx-lg-5" id="modules">
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <img src="./assets/img/class2.png" class="card-img-top" alt="Class 2">
+                    <div class="card-body">
+                        <h2 class="card-title">Design Trends</h2>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex
+                            numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-primary btn-sm"
+                            href="https://www.figma.com/make/4cFjc6qSwJ2ZWATA0oM1bF/Redesign-E-commerce-Platform?code-node-id=0-6&p=f&fullscreen=1"
+                            target="_blank">See</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <img src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h2 class="card-title">Card Two</h2>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex
+                            natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore
+                            voluptates quos eligendi labore.</p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <img src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h2 class="card-title">Card Three</h2>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex
+                            numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container px-4 px-lg-5">
+            <p class="m-0 text-center text-white">Copyright &copy; Kelly Marin 2026</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
