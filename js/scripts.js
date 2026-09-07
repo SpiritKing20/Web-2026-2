@@ -65,12 +65,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('balance-label').textContent = credit ? 'Disponible después del crédito' : 'Disponible';
         document.getElementById('summary-balance').classList.toggle('negative-value', credit > 0);
         const extraIncomeList = document.getElementById('extra-income-list');
+        document.getElementById('extra-income-count').textContent = financeData.extraIncomes.length;
         extraIncomeList.innerHTML = financeData.extraIncomes.length ? `
-            <p class="eyebrow mb-2">Ingresos registrados</p>
             ${financeData.extraIncomes.map((income) => `
                 <div class="income-item"><span><strong>${income.name}</strong><small>${income.date}</small></span><strong>${formatCurrency(income.amount)}</strong></div>
             `).join('')}
-        ` : '';
+        ` : '<p class="empty-state">Todavía no hay ingresos extra registrados.</p>';
         document.getElementById('expense-count').textContent = financeData.dailyExpenses.length;
         const expenseList = document.getElementById('expense-list');
         expenseList.innerHTML = financeData.dailyExpenses.length ? financeData.dailyExpenses.map((expense) => `

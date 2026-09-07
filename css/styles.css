@@ -11034,10 +11034,13 @@ body.dark-mode .action-card {
 
 .finance-panel {
   padding: 1.5rem;
+  min-width: 0;
+  overflow: hidden;
+  width: 100%;
 }
 
 .expense-history {
-  min-height: 100%;
+  min-height: 0;
 }
 
 .movement-count {
@@ -11061,6 +11064,18 @@ body.dark-mode .action-card {
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem 0;
+}
+
+.expense-item > span,
+.income-item > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.expense-item > strong,
+.income-item > strong {
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .expense-item small {

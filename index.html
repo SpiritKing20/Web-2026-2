@@ -47,7 +47,6 @@
                                 <!-- Icono Luna y Estrella (Modo Oscuro) -->
                                 <svg class="icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="#f59e0b" stroke="#f59e0b"></path>
-                                    <polygon points="12 2 13.09 4.26 15.54 4.62 13.77 6.34 14.19 8.78 12 7.63 9.81 8.78 10.23 6.34 8.46 4.62 10.91 4.26 12 2" fill="#f59e0b" stroke="#f59e0b"></polygon>
                                 </svg>
                                 <!-- Botón Deslizante -->
                                 <div class="thumb"></div>
@@ -181,7 +180,6 @@
                                 <div class="input-group mb-3"><span class="input-group-text">$</span><input class="form-control" id="extra-income-amount" type="number" min="1" step="1" required></div>
                                 <button class="btn btn-outline-success w-100" type="submit">Registrar ingreso extra</button>
                             </form>
-                            <div id="extra-income-list" class="extra-income-list"></div>
                             <hr>
                             <p class="eyebrow">Registro diario</p>
                             <h3>Agregar un gasto</h3>
@@ -195,7 +193,14 @@
                         </div>
                     </div>
                     <div class="col-lg-7">
-                        <div class="finance-panel expense-history"><div class="d-flex justify-content-between align-items-center mb-3"><div><p class="eyebrow mb-1">Movimientos</p><h3 class="mb-0">Gastos de hoy</h3></div><span class="movement-count" id="expense-count">0</span></div><div id="expense-list"><p class="empty-state">Todavía no hay gastos registrados.</p></div></div>
+                        <div class="finance-panel extra-income-history mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div><p class="eyebrow mb-1">Ingresos extra</p><h3 class="mb-0">Ingresos registrados</h3></div>
+                                <span class="movement-count income-count" id="extra-income-count">0</span>
+                            </div>
+                            <div id="extra-income-list"><p class="empty-state">Todavía no hay ingresos extra registrados.</p></div>
+                        </div>
+                        <div class="finance-panel expense-history"><div class="d-flex justify-content-between align-items-center mb-3"><div><p class="eyebrow mb-1">Movimientos</p><h3 class="mb-0">Gastos Registrados</h3></div><span class="movement-count" id="expense-count">0</span></div><div id="expense-list"><p class="empty-state">Todavía no hay gastos registrados.</p></div></div>
                     </div>
                 </div>
             </div>
