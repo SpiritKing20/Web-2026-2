@@ -44,58 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const saveFinanceData = () => localStorage.setItem(financeStorageKey, JSON.stringify(financeData));
 
-    const renderExpenseChart = () => {
-        const canvas = document.getElementById('expense-chart');
-        const wrapper = canvas.parentElement;
-        const width = wrapper.clientWidth;
-        const height = 260;
-        const pixelRatio = window.devicePixelRatio || 1;
-        const context = canvas.getContext('2d');
-        const expenses = [...financeData.dailyExpenses].reverse();
-        canvas.width = width * pixelRatio;
-        canvas.height = height * pixelRatio;
-        canvas.style.height = `${height}px`;
-        context.scale(pixelRatio, pixelRatio);
-        context.clearRect(0, 0, width, height);
-        context.font = '12px system-ui, sans-serif';
-        context.fillStyle = document.body.classList.contains('dark-mode') ? '#aab4c2' : '#687386';
-        if (!expenses.length) {
-            context.textAlign = 'center';
-            context.fillText('Registra un gasto para ver la gráfica.', width / 2, height / 2);
-            return;
-        }
-        const padding = { top: 20, right: 18, bottom: 48, left: 58 };
-        const chartWidth = width - padding.left - padding.right;
-        const chartHeight = height - padding.top - padding.bottom;
-        const maxAmount = Math.max(...expenses.map((expense) => expense.amount), 1);
-        const barGap = Math.max(8, chartWidth / expenses.length * .18);
-        const barWidth = Math.max(18, chartWidth / expenses.length - barGap);
-        const color = document.body.classList.contains('dark-mode') ? '#6ea8fe' : '#0d6efd';
-        context.strokeStyle = document.body.classList.contains('dark-mode') ? '#3b4654' : '#e3e8ef';
-        context.fillStyle = document.body.classList.contains('dark-mode') ? '#aab4c2' : '#687386';
-        context.textAlign = 'right';
-        for (let step = 0; step <= 2; step += 1) {
-            const y = padding.top + chartHeight - chartHeight * step / 2;
-            context.beginPath();
-            context.moveTo(padding.left, y);
-            context.lineTo(width - padding.right, y);
-            context.stroke();
-            context.fillText(formatCurrency(maxAmount * step / 2).replace(' ', ' '), padding.left - 8, y + 4);
-        }
-        expenses.forEach((expense, index) => {
-            const x = padding.left + index * (chartWidth / expenses.length) + barGap / 2;
-            const barHeight = chartHeight * expense.amount / maxAmount;
-            const y = padding.top + chartHeight - barHeight;
-            context.fillStyle = color;
-            context.beginPath();
-            context.roundRect(x, y, barWidth, barHeight, 5);
-            context.fill();
-            context.fillStyle = document.body.classList.contains('dark-mode') ? '#aab4c2' : '#687386';
-            context.textAlign = 'center';
-            context.fillText(expense.name.slice(0, 12), x + barWidth / 2, height - 24);
-        });
-    };
-
     const renderDashboard = () => {
         const dailyTotal = financeData.dailyExpenses.reduce((total, expense) => total + expense.amount, 0);
         const committed = financeData.fixedExpenses + financeData.sharedExpenses;
@@ -110,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
         expenseList.innerHTML = financeData.dailyExpenses.length ? financeData.dailyExpenses.map((expense) => `
             <div class="expense-item"><span><strong>${expense.name}</strong><small>${expense.date}</small></span><strong>${formatCurrency(expense.amount)}</strong></div>
         `).join('') : '<p class="empty-state">Todavía no hay gastos registrados.</p>';
-        renderExpenseChart();
     };
 
     const showFinance = () => {
@@ -160,7 +107,4 @@ document.addEventListener('DOMContentLoaded', () => {
         showFinance();
     });
 
-    window.addEventListener('resize', () => {
-        if (financeData && !dashboardView.classList.contains('d-none')) renderExpenseChart();
-    });
 });
