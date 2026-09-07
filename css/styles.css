@@ -11019,6 +11019,15 @@ body.dark-mode .action-card {
   color: #16834b;
 }
 
+.summary-card--credit {
+  background: #fff4f2;
+  border-color: #f0c7c0;
+}
+
+.summary-card--credit strong {
+  color: #c0392b;
+}
+
 .negative-value {
   color: #c0392b !important;
 }
@@ -11061,6 +11070,26 @@ body.dark-mode .action-card {
   margin-top: .2rem;
 }
 
+.income-item {
+  align-items: center;
+  border-top: 1px solid #edf0f4;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .75rem 0;
+}
+
+.income-item strong:last-child {
+  color: #16834b;
+}
+
+.income-item small {
+  color: #8a94a3;
+  display: block;
+  font-size: .78rem;
+  margin-top: .2rem;
+}
+
 .empty-state {
   background: #f7f9fc;
   border-radius: .5rem;
@@ -11088,7 +11117,20 @@ body.dark-mode .summary-card--balance strong {
   color: #7de2a9;
 }
 
+body.dark-mode .summary-card--credit {
+  background: #4a2522;
+  border-color: #713b35;
+}
+
+body.dark-mode .summary-card--credit strong {
+  color: #ff9d91;
+}
+
 body.dark-mode .expense-item {
+  border-color: #333;
+}
+
+body.dark-mode .income-item {
   border-color: #333;
 }
 

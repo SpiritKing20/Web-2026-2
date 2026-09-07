@@ -162,14 +162,27 @@
                     <button class="btn btn-outline-danger" id="reset-finance" type="button">Resetear / Reconfigurar</button>
                 </div>
                 <div class="row g-3 summary-grid">
-                    <div class="col-sm-6 col-xl-3"><div class="summary-card"><span>Ingresos</span><strong id="summary-income">$0</strong></div></div>
+                    <div class="col-sm-6 col-xl-3"><div class="summary-card"><span>Ingresos base</span><strong id="summary-income">$0</strong></div></div>
+                    <div class="col-sm-6 col-xl-3"><div class="summary-card"><span>Ingresos extra</span><strong id="summary-extra-income">$0</strong></div></div>
                     <div class="col-sm-6 col-xl-3"><div class="summary-card"><span>Comprometido</span><strong id="summary-committed">$0</strong></div></div>
                     <div class="col-sm-6 col-xl-3"><div class="summary-card"><span>Gastos diarios</span><strong id="summary-daily">$0</strong></div></div>
-                    <div class="col-sm-6 col-xl-3"><div class="summary-card summary-card--balance"><span>Disponible</span><strong id="summary-balance">$0</strong></div></div>
+                    <div class="col-sm-6 col-xl-3"><div class="summary-card summary-card--balance"><span id="balance-label">Disponible</span><strong id="summary-balance">$0</strong></div></div>
+                    <div class="col-sm-6 col-xl-3"><div class="summary-card summary-card--credit"><span>Crédito utilizado</span><strong id="summary-credit">$0</strong></div></div>
                 </div>
                 <div class="row g-4 mt-1">
                     <div class="col-lg-5">
                         <div class="finance-panel">
+                            <p class="eyebrow">Ingresos adicionales</p>
+                            <h3>Agregar ingreso extra</h3>
+                            <form id="extra-income-form" class="mb-4">
+                                <label class="form-label" for="extra-income-name">Descripción</label>
+                                <input class="form-control mb-3" id="extra-income-name" type="text" placeholder="Ej. Trabajo freelance" required>
+                                <label class="form-label" for="extra-income-amount">Valor</label>
+                                <div class="input-group mb-3"><span class="input-group-text">$</span><input class="form-control" id="extra-income-amount" type="number" min="1" step="1" required></div>
+                                <button class="btn btn-outline-success w-100" type="submit">Registrar ingreso extra</button>
+                            </form>
+                            <div id="extra-income-list" class="extra-income-list"></div>
+                            <hr>
                             <p class="eyebrow">Registro diario</p>
                             <h3>Agregar un gasto</h3>
                             <form id="expense-form">

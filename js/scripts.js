@@ -6,8 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const dashboardView = document.getElementById('dashboard-view');
     const setupForm = document.getElementById('setup-form');
     const expenseForm = document.getElementById('expense-form');
+    const extraIncomeForm = document.getElementById('extra-income-form');
     const financeStorageKey = 'personalFinanceData';
     let financeData = JSON.parse(localStorage.getItem(financeStorageKey)) || null;
+    if (financeData) {
+        financeData.dailyExpenses = financeData.dailyExpenses || [];
+        financeData.extraIncomes = financeData.extraIncomes || [];
+    }
 
     // 1. LOCALSTORAGE: Cargar estado guardado
     const savedTheme = localStorage.getItem('themePreference');
@@ -46,13 +51,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const renderDashboard = () => {
         const dailyTotal = financeData.dailyExpenses.reduce((total, expense) => total + expense.amount, 0);
+        const extraIncomeTotal = financeData.extraIncomes.reduce((total, income) => total + income.amount, 0);
         const committed = financeData.fixedExpenses + financeData.sharedExpenses;
-        const balance = financeData.income - committed - dailyTotal;
+        const balanceBeforeCredit = financeData.income + extraIncomeTotal - committed - dailyTotal;
+        const available = Math.max(0, balanceBeforeCredit);
+        const credit = Math.max(0, -balanceBeforeCredit);
         document.getElementById('summary-income').textContent = formatCurrency(financeData.income);
+        document.getElementById('summary-extra-income').textContent = formatCurrency(extraIncomeTotal);
         document.getElementById('summary-committed').textContent = formatCurrency(committed);
         document.getElementById('summary-daily').textContent = formatCurrency(dailyTotal);
-        document.getElementById('summary-balance').textContent = formatCurrency(balance);
-        document.getElementById('summary-balance').classList.toggle('negative-value', balance < 0);
+        document.getElementById('summary-balance').textContent = formatCurrency(available);
+        document.getElementById('summary-credit').textContent = formatCurrency(credit);
+        document.getElementById('balance-label').textContent = credit ? 'Disponible después del crédito' : 'Disponible';
+        document.getElementById('summary-balance').classList.toggle('negative-value', credit > 0);
+        const extraIncomeList = document.getElementById('extra-income-list');
+        extraIncomeList.innerHTML = financeData.extraIncomes.length ? `
+            <p class="eyebrow mb-2">Ingresos registrados</p>
+            ${financeData.extraIncomes.map((income) => `
+                <div class="income-item"><span><strong>${income.name}</strong><small>${income.date}</small></span><strong>${formatCurrency(income.amount)}</strong></div>
+            `).join('')}
+        ` : '';
         document.getElementById('expense-count').textContent = financeData.dailyExpenses.length;
         const expenseList = document.getElementById('expense-list');
         expenseList.innerHTML = financeData.dailyExpenses.length ? financeData.dailyExpenses.map((expense) => `
@@ -81,7 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
             income: Number(document.getElementById('monthly-income').value),
             fixedExpenses: Number(document.getElementById('fixed-expenses').value),
             sharedExpenses: Number(document.getElementById('shared-expenses').value),
-            dailyExpenses: []
+            dailyExpenses: [],
+            extraIncomes: []
         };
         saveFinanceData();
         showFinance();
@@ -96,6 +115,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         saveFinanceData();
         expenseForm.reset();
+        renderDashboard();
+    });
+
+    extraIncomeForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        financeData.extraIncomes.unshift({
+            name: document.getElementById('extra-income-name').value.trim(),
+            amount: Number(document.getElementById('extra-income-amount').value),
+            date: new Intl.DateTimeFormat('es-CO', { day: '2-digit', month: 'short' }).format(new Date())
+        });
+        saveFinanceData();
+        extraIncomeForm.reset();
         renderDashboard();
     });
 
